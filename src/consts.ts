@@ -3,7 +3,7 @@
 
 export const SITE_TITLE = "Myursel's Blog";
 export const SITE_DESCRIPTION =
-	'Notes from Myursel Shahin — AI student at Radboud University in Nijmegen. Projects, coursework, and whatever I am building or breaking at the moment.';
+	'Notes from Myursel Shahin, AI student at Radboud University in Nijmegen. Projects, coursework, and whatever I am building or breaking at the moment.';
 
 export const AUTHOR = 'Myursel Shahin';
 

@@ -10,6 +10,15 @@ export default defineConfig({
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
+			provider: fontProviders.google(),
+			name: 'Fraunces',
+			cssVariable: '--font-fraunces',
+			weights: [400, 600, 700],
+			styles: ['normal'],
+			subsets: ['latin'],
+			fallbacks: ['Georgia', 'serif'],
+		},
+		{
 			provider: fontProviders.local(),
 			name: 'Atkinson',
 			cssVariable: '--font-atkinson',

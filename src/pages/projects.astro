@@ -1,0 +1,189 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+// Edit this list to add or change a project. `link` and `linkLabel` are
+// optional. Leave them out and the card renders without a link.
+const projects = [
+	{
+		title: 'PaperScroll',
+		year: '2026',
+		status: 'In progress',
+		summary:
+			'A reading feed for arXiv papers. Pulls new preprints, presents them in a scrollable feed instead of a search box, so keeping up with a field feels less like a chore.',
+		stack: ['Next.js', 'TypeScript', 'arXiv API'],
+	},
+	{
+		title: 'Local AI stack',
+		year: '2026',
+		status: 'Running',
+		summary:
+			'A self-hosted multimodal setup running on my own laptop; models served locally rather than through an API. Built to understand what actually happens between a prompt and a response, and to keep working without a network.',
+		stack: ['Python', 'Local inference', 'Linux'],
+	},
+	{
+		title: 'Home network filtering',
+		year: '2025',
+		status: 'Running',
+		summary:
+			'A Raspberry Pi handling DNS and DHCP for the flat, doing network-level filtering for every device on it. An automation server on the same hardware is the next step.',
+		stack: ['Raspberry Pi', 'DNS/DHCP', 'Networking'],
+	},
+	{
+		title: 'This blog',
+		year: '2026',
+		status: 'Live',
+		summary:
+			'A static site built with Astro: content in markdown, no database, no client-side JavaScript to speak of. Where I write up everything above.',
+		stack: ['Astro', 'TypeScript', 'CSS'],
+		link: 'https://github.com/Myursel777/myursel-blog',
+		linkLabel: 'Source on GitHub',
+	},
+];
+
+const coursework = [
+	'Reinforcement learning',
+	'Bayesian networks',
+	'Explainable AI',
+	'Robotics with LEGO SPIKE and CoppeliaSim',
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Projects | ${SITE_TITLE}`}
+			description="Things I have built: AI, self-hosting and networking projects by Myursel Shahin."
+		/>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>Projects</h1>
+			<p class="intro">
+				Things I've built, mostly to answer a question I had. Some are finished, some are still
+				moving.
+			</p>
+
+			<ul class="projects">
+				{
+					projects.map((project) => (
+						<li class="project">
+							<div class="project-head">
+								<h2>{project.title}</h2>
+								<span class="meta">
+									{project.year} · {project.status}
+								</span>
+							</div>
+							<p>{project.summary}</p>
+							<ul class="stack">
+								{project.stack.map((tech) => (
+									<li>{tech}</li>
+								))}
+							</ul>
+							{project.link && (
+								<a class="project-link" href={project.link} target="_blank" rel="noopener noreferrer">
+									{project.linkLabel ?? 'View project'} →
+								</a>
+							)}
+						</li>
+					))
+				}
+			</ul>
+
+			<h2 class="coursework-heading">From coursework</h2>
+			<p>
+				Projects built as part of the BSc Artificial Intelligence at Radboud University, in areas
+				including:
+			</p>
+			<ul>
+				{coursework.map((item) => <li>{item}</li>)}
+			</ul>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.intro {
+		font-size: 1.1em;
+		color: rgb(var(--gray));
+		margin-bottom: 2.5em;
+	}
+
+	ul.projects {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 3em 0;
+	}
+
+	.project {
+		padding: 1.6em 0;
+		margin: 0;
+		border-top: 1px solid var(--border);
+	}
+
+	.project:last-child {
+		border-bottom: 1px solid var(--border);
+	}
+
+	.project-head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.5em;
+		margin-bottom: 0.4em;
+	}
+
+	.project h2 {
+		margin: 0;
+		font-size: 1.5em;
+	}
+
+	.meta {
+		font-size: 0.8em;
+		color: rgb(var(--gray));
+		white-space: nowrap;
+	}
+
+	.project p {
+		margin: 0 0 0.9em 0;
+	}
+
+	ul.stack {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	ul.stack li {
+		margin: 0;
+		padding: 0.2em 0.7em;
+		font-size: 0.75em;
+		color: rgb(var(--gray-dark));
+		background: var(--accent-soft);
+		border-radius: 999px;
+	}
+
+	.project-link {
+		display: inline-block;
+		margin-top: 1em;
+		font-size: 0.9em;
+		text-decoration: none;
+	}
+
+	.project-link:hover {
+		text-decoration: underline;
+	}
+
+	.coursework-heading {
+		margin-top: 0;
+	}
+</style>
