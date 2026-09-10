@@ -6,7 +6,6 @@ import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/og-default.jpg';
 import { SITE_TITLE } from '../consts';
 import { Font } from 'astro:assets';
-import FallbackImage from '../assets/og-default.jpg';
 
 interface Props {
 	title: string;
@@ -18,14 +17,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = FallbackImage } = Astro.props;
 ---
+
 <script is:inline>
 	const stored = localStorage.getItem('theme');
 	document.documentElement.dataset.theme =
 		stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 </script>
-
-<!-- Global Metadata -->
-<meta charset="utf-8" />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
