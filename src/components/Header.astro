@@ -1,7 +1,9 @@
 ---
 import { SITE_TITLE, SOCIALS } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
 ---
+
 <header>
 	<nav>
 		<h2><a href="/">{SITE_TITLE}</a></h2>
@@ -21,6 +23,7 @@ import HeaderLink from './HeaderLink.astro';
 				))
 			}
 		</div>
+		<ThemeToggle />
 	</nav>
 </header>
 <style>

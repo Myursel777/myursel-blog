@@ -17,6 +17,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = FallbackImage } = Astro.props;
 ---
+<script is:inline>
+	const stored = localStorage.getItem('theme');
+	document.documentElement.dataset.theme =
+		stored ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+</script>
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
