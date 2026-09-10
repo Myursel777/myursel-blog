@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import { SITE_TITLE } from '../../consts';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = await getCollection('blog');
+
+const counts = new Map();
+for (const post of posts) {
+	for (const tag of post.data.tags) {
+		counts.set(tag, (counts.get(tag) ?? 0) + 1);
+	}
+}
+
+const tags = [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+---
+
+<BaseLayout title={`Tags | ${SITE_TITLE}`} description="Every topic on the blog.">
+	<h1>Tags</h1>
+	<p class="intro">Everything I have written, grouped by subject.</p>
+
+	<ul class="tags">
+		{
+			tags.map(([tag, count]) => (
+				<li>
+					<a href={`/tags/${tag}/`}>
+						{tag} <span class="count">{count}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</BaseLayout>
+
+<style>
+	.intro {
+		color: rgb(var(--gray));
+		margin-bottom: 2em;
+	}
+	ul.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.6em;
+		list-style: none;
+		padding: 0;
+	}
+	ul.tags li {
+		margin: 0;
+	}
+	ul.tags a {
+		display: inline-block;
+		padding: 0.35em 0.9em;
+		background: var(--accent-soft);
+		border-radius: 999px;
+		text-decoration: none;
+		font-size: 0.9em;
+	}
+	.count {
+		color: rgb(var(--gray));
+		font-size: 0.85em;
+	}
+</style>

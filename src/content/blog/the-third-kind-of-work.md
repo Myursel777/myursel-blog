@@ -2,6 +2,7 @@
 title: 'The Third Kind of Work'
 description: 'I planned my whole week, finished everything on the list, and still did not feel productive. So I added a third type of work to the schedule.'
 pubDate: 'Sep 10 2026'
+tags: ['wellbeing', 'productivity']
 ---
 
 Recently I found myself in a position where I did everything I should do as I planned at the start of the week, but I still didn't feel the "I was productive this whole week" dopamine, and I started to think about it.
