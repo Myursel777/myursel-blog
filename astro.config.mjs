@@ -6,7 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com', // TODO: replace with your real domain before deploying (sitemap + RSS depend on it)
+	site: 'https://myursel.netlify.app', // TODO: replace with your real domain before deploying (sitemap + RSS depend on it)
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{

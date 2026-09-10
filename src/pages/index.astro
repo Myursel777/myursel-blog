@@ -1,60 +1,47 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Selam, I'm Myursel.</h1>
+<BaseLayout>
+	<h1>Selam, I'm Myursel.</h1>
 
-			<p class="lead">
-				Third-year Artificial Intelligence student at Radboud University in Nijmegen, living in
-				Arnhem. I grew up in Izmir and have lived and worked across Turkey, the Netherlands and
-				Ireland before settling here.
-			</p>
+	<p class="lead">
+		Third-year Artificial Intelligence student at Radboud University in Nijmegen, living in
+		Arnhem. I grew up in Izmir and have lived and worked across Turkey, the Netherlands and
+		Ireland before settling here.
+	</p>
 
-			<p>
-				This site is where I keep track of what I build; course projects, side projects, and
-				whatever I happen to be learning at the time. Less a polished portfolio, more a working
-				notebook I am happy to leave open.
-			</p>
+	<p>
+		This site is where I keep track of what I build; course projects, side projects, and
+		whatever I happen to be learning at the time. Less a polished portfolio, more a working
+		notebook I am happy to leave open.
+	</p>
 
-			<h2>What I'm working on</h2>
-			<ul>
-				<li><strong>PaperScroll</strong> : a Next.js reading feed for arXiv papers.</li>
-				<li><strong>A local AI stack</strong> :running models on my own machine instead of someone else's.</li>
-				<li>
-					<strong>Home network</strong> : a Raspberry Pi doing DNS-level filtering, with an automation
-					server as the next step.
-				</li>
-				<li><strong>University</strong> : BSc Artificial Intelligence. </li>
-			</ul>
+	<h2>What I'm working on</h2>
+	<ul>
+		<li><strong>PaperScroll</strong> : a Next.js reading feed for arXiv papers.</li>
+		<li><strong>A local AI stack</strong> :running models on my own machine instead of someone else's.</li>
+		<li>
+			<strong>Home network</strong> : a Raspberry Pi doing DNS-level filtering, with an automation
+			server as the next step.
+		</li>
+		<li><strong>University</strong> : BSc Artificial Intelligence. </li>
+	</ul>
 
-			<p>
-				Start with <a href="/blog">the blog</a>, or read a bit more <a href="/about">about me</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+	<p>
+		Start with <a href="/blog">the blog</a>, or read a bit more <a href="/about">about me</a>.
+	</p>
+</BaseLayout>
 
 <style>
 	.lead {
 		font-size: 1.15em;
 		color: rgb(var(--gray-dark));
 	}
-	main ul {
+	ul {
 		padding-left: 1.2em;
 	}
-	main li {
+	li {
 		margin-bottom: 0.5em;
 	}
 </style>

@@ -1,7 +1,5 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_TITLE } from '../consts';
 
 // Edit this list to add or change a project. `link` and `linkLabel` are
@@ -51,61 +49,51 @@ const coursework = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title={`Projects | ${SITE_TITLE}`}
-			description="Things I have built: AI, self-hosting and networking projects by Myursel Shahin."
-		/>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Projects</h1>
-			<p class="intro">
-				Things I've built, mostly to answer a question I had. Some are finished, some are still
-				moving.
-			</p>
+<BaseLayout
+	title={`Projects | ${SITE_TITLE}`}
+	description="Things I have built: AI, self-hosting and networking projects by Myursel Shahin."
+>
+	<h1>Projects</h1>
+	<p class="intro">
+		Things I've built, mostly to answer a question I had. Some are finished, some are still
+		moving.
+	</p>
 
-			<ul class="projects">
-				{
-					projects.map((project) => (
-						<li class="project">
-							<div class="project-head">
-								<h2>{project.title}</h2>
-								<span class="meta">
-									{project.year} · {project.status}
-								</span>
-							</div>
-							<p>{project.summary}</p>
-							<ul class="stack">
-								{project.stack.map((tech) => (
-									<li>{tech}</li>
-								))}
-							</ul>
-							{project.link && (
-								<a class="project-link" href={project.link} target="_blank" rel="noopener noreferrer">
-									{project.linkLabel ?? 'View project'} →
-								</a>
-							)}
-						</li>
-					))
-				}
-			</ul>
+	<ul class="projects">
+		{
+			projects.map((project) => (
+				<li class="project">
+					<div class="project-head">
+						<h2>{project.title}</h2>
+						<span class="meta">
+							{project.year} · {project.status}
+						</span>
+					</div>
+					<p>{project.summary}</p>
+					<ul class="stack">
+						{project.stack.map((tech) => (
+							<li>{tech}</li>
+						))}
+					</ul>
+					{project.link && (
+						<a class="project-link" href={project.link} target="_blank" rel="noopener noreferrer">
+							{project.linkLabel ?? 'View project'} →
+						</a>
+					)}
+				</li>
+			))
+		}
+	</ul>
 
-			<h2 class="coursework-heading">From coursework</h2>
-			<p>
-				Projects built as part of the BSc Artificial Intelligence at Radboud University, in areas
-				including:
-			</p>
-			<ul>
-				{coursework.map((item) => <li>{item}</li>)}
-			</ul>
-		</main>
-		<Footer />
-	</body>
-</html>
+	<h2 class="coursework-heading">From coursework</h2>
+	<p>
+		Projects built as part of the BSc Artificial Intelligence at Radboud University, in areas
+		including:
+	</p>
+	<ul>
+		{coursework.map((item) => <li>{item}</li>)}
+	</ul>
+</BaseLayout>
 
 <style>
 	.intro {
